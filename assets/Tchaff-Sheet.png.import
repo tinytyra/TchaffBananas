@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t1ais30ws5u5"
-path="res://.godot/imported/tchaff-spritesheet.png-bb27121941ca7974bf1a5dfb78eae7f7.ctex"
+uid="uid://d2dexvn2347c0"
+path="res://.godot/imported/Tchaff-Sheet.png-b3abf1f04fd0730dd0183a68da5b7122.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tchaff-spritesheet.png"
-dest_files=["res://.godot/imported/tchaff-spritesheet.png-bb27121941ca7974bf1a5dfb78eae7f7.ctex"]
+source_file="res://assets/Tchaff-Sheet.png"
+dest_files=["res://.godot/imported/Tchaff-Sheet.png-b3abf1f04fd0730dd0183a68da5b7122.ctex"]
 
 [params]
 
