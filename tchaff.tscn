@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bk8okn44jkeef"]
+[gd_scene load_steps=13 format=3 uid="uid://dg2a5feb15vop"]
 
 [ext_resource type="Script" path="res://tchaff.gd" id="1_cjiq6"]
 [ext_resource type="Texture2D" uid="uid://d2dexvn2347c0" path="res://assets/Tchaff-Sheet.png" id="2_vx8he"]
