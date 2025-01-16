@@ -4,13 +4,14 @@ extends Node
 var score
 
 func _ready():
-	# pass
+	pass
 	# automatically start a new game for testing purposes
-	newGame()
+	#newGame()
 	
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$HUD.show_game_over()
 
 func _on_tchaff_hit() -> void:
 	$ScoreTimer.stop()
@@ -20,6 +21,8 @@ func newGame():
 	score = 0
 	$tchaff.start($StartPos.position)
 	$StartTimer.start()
+	$HUD.update_score(score)
+	$HUD.show_message("prepar for... BANAN")
 
 func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
@@ -47,8 +50,9 @@ func _on_mob_timer_timeout() -> void:
 	add_child(mob)
 
 
-func _on_score_timer_timeout() -> void:
+func _on_score_timer_timeout():
 	score += 1
+	$HUD.update_score(score)
 
 
 func _on_start_timer_timeout() -> void:

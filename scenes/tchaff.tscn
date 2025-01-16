@@ -82,11 +82,12 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l51o"]
-size = Vector2(83, 116)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hesox"]
+radius = 26.0
+height = 84.0
 
 [node name="tchaff" type="Area2D"]
-position = Vector2(210, 291)
+position = Vector2(213, 301)
 script = ExtResource("1_cjiq6")
 metadata/_edit_group_ = true
 
@@ -97,7 +98,6 @@ animation = &"wobble_down"
 frame_progress = 0.048894
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -7)
-shape = SubResource("RectangleShape2D_5l51o")
+shape = SubResource("CapsuleShape2D_hesox")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

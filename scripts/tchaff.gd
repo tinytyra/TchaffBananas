@@ -23,13 +23,14 @@ func _process(delta):
 
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-		$AnimatedSprite2D.play()
-	else:
-		$AnimatedSprite2D.stop()
+#		$AnimatedSprite2D.play()
+#	else:
+#		$AnimatedSprite2D.stop()
 	
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
+	$AnimatedSprite2D.play()
 	$AnimatedSprite2D.rotation_degrees = 0 # always straighten up the creature before applying mathematics :3
 	
 	if velocity.y < 0 and velocity.x == 0: # if moving up and not going left/right
