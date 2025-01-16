@@ -32,13 +32,16 @@ offset_right = 717.0
 offset_bottom = 17.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.6365, 0.95, 0.87685, 1)
-theme_override_colors/font_outline_color = Color(0.096, 0.16, 0.136533, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.541176, 0.745098, 0.592157, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 25
-theme_override_constants/shadow_outline_size = 0
+theme_override_constants/shadow_outline_size = 20
 theme_override_fonts/font = ExtResource("1_xyxky")
 theme_override_font_sizes/font_size = 160
-text = "don't eat banans!"
+text = "Tchaff, dodge banans!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -69,7 +72,7 @@ text = "PLAY"
 flat = true
 
 [node name="MessageTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.5
 one_shot = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

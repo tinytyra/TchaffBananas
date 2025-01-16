@@ -23,6 +23,7 @@ func newGame():
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("prepar for... BANAN")
+	get_tree().call_group("bananas", "queue_free")
 
 func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.

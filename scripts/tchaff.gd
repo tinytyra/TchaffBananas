@@ -30,7 +30,6 @@ func _process(delta):
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	
-	$AnimatedSprite2D.play()
 	$AnimatedSprite2D.rotation_degrees = 0 # always straighten up the creature before applying mathematics :3
 	
 	if velocity.y < 0 and velocity.x == 0: # if moving up and not going left/right
@@ -62,3 +61,5 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+	$AnimatedSprite2D.animation = "wobble_down"
+	$AnimatedSprite2D.play()
