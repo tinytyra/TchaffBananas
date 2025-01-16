@@ -13,10 +13,11 @@ func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	print("Game over")
 
-func _on_tchaff_hit() -> void:
-	$ScoreTimer.stop()
-	$MobTimer.stop()
+#func _on_tchaff_hit() -> void:
+#	$ScoreTimer.stop()
+#	$MobTimer.stop()
 
 func newGame():
 	score = 0
@@ -25,6 +26,7 @@ func newGame():
 	$HUD.update_score(score)
 	$HUD.show_message("prepar for... BANAN")
 	get_tree().call_group("bananas", "queue_free")
+	print("Started new game")
 
 func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
@@ -50,6 +52,9 @@ func _on_mob_timer_timeout() -> void:
 	
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+	
+	print("Added banana child")
+	print(mob.linear_velocity)
 
 func _on_score_timer_timeout():
 	score += 1
@@ -58,3 +63,4 @@ func _on_score_timer_timeout():
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
 	$ScoreTimer.start()
+	print("StartTimer timed out")
