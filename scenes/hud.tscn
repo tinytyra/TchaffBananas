@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://xljnuuedrcyy"]
+[gd_scene load_steps=5 format=3 uid="uid://xljnuuedrcyy"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_w3xm3"]
 [ext_resource type="FontFile" uid="uid://cf40gpwdho05a" path="res://assets/CherryBombOne-Regular.ttf" id="1_xyxky"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_3sbpq"]
+action = &"start_game"
+
+[sub_resource type="Shortcut" id="Shortcut_ia32y"]
+events = [SubResource("InputEventAction_3sbpq")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_w3xm3")
@@ -68,6 +74,7 @@ theme_override_colors/font_outline_color = Color(0.21336, 0.1372, 0.28, 1)
 theme_override_constants/outline_size = 67
 theme_override_fonts/font = ExtResource("1_xyxky")
 theme_override_font_sizes/font_size = 200
+shortcut = SubResource("Shortcut_ia32y")
 text = "PLAY"
 flat = true
 

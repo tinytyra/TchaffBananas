@@ -9,6 +9,7 @@ func _ready():
 	#newGame()
 	
 func game_over():
+	$DeathMihh.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
