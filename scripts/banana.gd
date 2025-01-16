@@ -6,8 +6,4 @@ func _ready():
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
-	print("Banana has left the area")
-	
-#func _process(_delta):
-#	if RigidBody2D(linear_velocity < 150):
-#		RigidBody2D.linear_velocity = linear_velocity.normalized()
+	print("Banana left the area") # For testing purposes to see if/when code breaks clearer
