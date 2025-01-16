@@ -9,11 +9,11 @@ func show_message(text):
 	$MessageTimer.start()
 	
 func show_game_over():
-	show_message("game over")
+	show_message("Tchaff is ded :(")
 	# Wait until the MessageTimer has counted down.
 	await $MessageTimer.timeout
 
-	$Message.text = "don't eat banans!"
+	$Message.text = "Tchaff try again?"
 	$Message.show()
 	
 	# Make a one-shot timer and wait for it to finish.
