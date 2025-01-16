@@ -7,8 +7,6 @@ var screen_size # Size of the game window.
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	#hide()
-	# reenable that when ready for the game to like...exist (if i choose to follow the structure)
 	
 func _process(delta):
 	var velocity = Vector2.ZERO

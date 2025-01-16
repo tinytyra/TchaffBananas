@@ -5,8 +5,8 @@ var score
 
 func _ready():
 	pass
-	# automatically start a new game for testing purposes
-	#newGame()
+#	newGame()
+# automatically start a new game for testing purposes
 	
 func game_over():
 	$DeathMihh.play()
@@ -47,15 +47,13 @@ func _on_mob_timer_timeout() -> void:
 	# Choose the velocity for the mob.
 	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
-
+	
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
-
 
 func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
-
 
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
