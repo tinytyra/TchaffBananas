@@ -9,21 +9,20 @@ var screen_size # Size of the game window
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	$AnimationPlayer.play("RESET")
-	$AnimatedSprite2D.animation = "wobble_down"
-	$AnimatedSprite2D.play()
+	$AnimationPlayer.play("RESET") # reset animation states
+	$AnimatedSprite2D.play() # start wobbling
 
 func _on_body_entered(_body: Node2D) -> void:
 	hp -= 1
 	hit.emit(hp)
 	$DeathMihh.play()
-	$AnimatedSprite2D.pause()
+	$AnimatedSprite2D.pause() # get bamboozled into no wobble
 	$AnimationPlayer.play("HitAnimation")
 	if hp == 0:
 		died.emit()
-		$AnimationPlayer.queue("DeathAnimation")
+		$AnimationPlayer.play("DeathAnimation")
 	else:
-		$AnimationPlayer.queue("RESET")
+		$AnimationPlayer.queue("RESET") # queue reset animation states
 
 # Gives the player 1.5s of invulnerability after being hit
 func _on_hit(_hp) -> void:
@@ -31,16 +30,14 @@ func _on_hit(_hp) -> void:
 	if hp > 0:
 		await get_tree().create_timer(1.5).timeout
 		$CollisionShape2D.disabled = false
-		$AnimatedSprite2D.play()
+		$AnimatedSprite2D.play() # resume wobbles
 
 func start(pos):
 	position = pos
 	hp = 3
-	$AnimationPlayer.queue("RESET")
-	$CollisionShape2D.disabled = false
-	# reset animation states and reenable hitbox
-	$AnimatedSprite2D.animation = "wobble_down"
-	$AnimatedSprite2D.play()
+	$AnimationPlayer.play("RESET") # reset animation states
+	$CollisionShape2D.disabled = false # reenable hitbox
+	$AnimatedSprite2D.play() # start wobbling
 
 func _physics_process(delta):
 	var velocity = Vector2.ZERO
