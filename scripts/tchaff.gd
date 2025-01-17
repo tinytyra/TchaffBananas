@@ -4,11 +4,12 @@ signal hit
 
 @export var speed = 400 # How fast Tchaff moves
 var screen_size # Size of the game window
+var hp = 3 # hp are 3 = :3, 2 = :), 1 = :|, 0 = :(
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
-func _process(delta):
+func _physics_process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
@@ -46,10 +47,13 @@ func _process(delta):
 				$AnimatedSprite2D.rotation_degrees = -45 # rotate sprite up right
 
 func _on_body_entered(_body: Node2D) -> void:
+	$DeathMihh.play()
+	hp -= 1
 	hide() # Player disappears after being hit.
 	hit.emit() # scream in death pain and anguish at whoever listens
 	# Must be deferred as we can't change physics properties on a physics callback
 	$CollisionShape2D.set_deferred("disabled", true)
+
 
 func start(pos):
 	position = pos

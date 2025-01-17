@@ -8,7 +8,6 @@ func _ready():
 
 func game_over():
 	#$Music.stop()
-	$DeathMihh.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
