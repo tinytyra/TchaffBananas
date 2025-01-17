@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cceopolm7wb2u"
-path="res://.godot/imported/Tchaff_spritesheet_outlined-2x.png-292d59c73b0dd2cda2dd911ce9080f95.ctex"
+uid="uid://ddexjvjwbqscj"
+path="res://.godot/imported/place_bg.png-b80e61203a5ebd6d030b3871ed9b4ed8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tchaff_spritesheet_outlined-2x.png"
-dest_files=["res://.godot/imported/Tchaff_spritesheet_outlined-2x.png-292d59c73b0dd2cda2dd911ce9080f95.ctex"]
+source_file="res://assets/place_bg.png"
+dest_files=["res://.godot/imported/place_bg.png-b80e61203a5ebd6d030b3871ed9b4ed8.ctex"]
 
 [params]
 
