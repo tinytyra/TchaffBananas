@@ -17,7 +17,6 @@ func game_over():
 func newGame():
 	score = 0
 	$tchaff.start($StartPos.position)
-	#$Music.play()
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("prepar for... BANAN")

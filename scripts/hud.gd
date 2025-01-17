@@ -17,12 +17,14 @@ func show_game_over():
 	# Make a one-shot timer and wait for it to finish.
 	await get_tree().create_timer(0.5).timeout
 	$StartButton.show()
+	$Guide.show()
 
 func update_score(score):
 	$ScoreLabel.text = str(score)
 
 func _on_start_button_pressed():
 	$StartButton.hide()
+	$Guide.hide()
 	start_game.emit()
 
 func _on_message_timer_timeout():
