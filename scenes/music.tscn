@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://5yvbmn15wc57"]
+
+[ext_resource type="AudioStream" uid="uid://cwjtfrg52qvgl" path="res://assets/tchaff.ogg" id="1_833o2"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_833o2")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+parameters/looping = false

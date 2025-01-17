@@ -7,7 +7,7 @@ var screen_size # Size of the game window
 
 func _ready():
 	screen_size = get_viewport_rect().size
-	
+
 func _process(delta):
 	var velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
@@ -24,12 +24,12 @@ func _process(delta):
 
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
-	
+
 	$AnimatedSprite2D.rotation_degrees = 0 # Reset rotation
-	
+
 	if velocity.y < 0 and velocity.x == 0: # if moving up, but not left/right
 		$AnimatedSprite2D.animation = "wobble_up" # use up animation
-	elif velocity.y > 0 and velocity.x == 0: # if moving down, but not left/right 
+	elif velocity.y > 0 and velocity.x == 0: # if moving down, but not left/right
 			$AnimatedSprite2D.animation = "wobble_down" # use down animation
 	else:
 		if velocity.x < 0: # if moving left

@@ -5,9 +5,9 @@ var score
 
 func _ready():
 	pass
-	
+
 func game_over():
-	$Music.stop()
+	#$Music.stop()
 	$DeathMihh.play()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
@@ -17,7 +17,7 @@ func game_over():
 func newGame():
 	score = 0
 	$tchaff.start($StartPos.position)
-	$Music.play()
+	#$Music.play()
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("prepar for... BANAN")
@@ -29,19 +29,19 @@ func _on_mob_timer_timeout() -> void:
 
 	var mob_spawn_location = $MobPath/MobSpawnLocation
 	mob_spawn_location.progress_ratio = randf() # Make random spawnspot
-	
+
 	var direction = mob_spawn_location.rotation + PI / 2 # Mob direction perpendicular to path direction
-	
+
 	mob.position = mob_spawn_location.position # Sets mob position to spawn position
 
 	direction += randf_range(-PI / 4, PI / 4)
 	mob.rotation = direction # Go a random direction
 
-	var velocity = Vector2(randf_range(150.0, 250.0), 0.0) 
+	var velocity = Vector2(randf_range(150.0, 250.0), 0.0)
 	mob.linear_velocity = velocity.rotated(direction) # Go a random velocity
-	
+
 	add_child(mob) # Spawn by adding to main scene
-	
+
 	print("Added banana child") # For testing purposes to see if/when code breaks clearer
 
 func _on_score_timer_timeout():
