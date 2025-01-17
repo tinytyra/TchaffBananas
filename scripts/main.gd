@@ -1,13 +1,13 @@
 extends Node
 
 @export var mob_scene : PackedScene
+
 var score
 
 func _ready():
 	pass
 
 func game_over():
-	#$Music.stop()
 	$ScoreTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()

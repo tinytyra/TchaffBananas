@@ -1,10 +1,11 @@
 extends Area2D
 
-signal hit
+signal died
+signal hit(hp)
+var hp : int = 3
 
 @export var speed = 400 # How fast Tchaff moves
 var screen_size # Size of the game window
-var hp = 3 # hp are 3 = :3, 2 = :), 1 = :|, 0 = :(
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -47,17 +48,21 @@ func _physics_process(delta):
 				$AnimatedSprite2D.rotation_degrees = -45 # rotate sprite up right
 
 func _on_body_entered(_body: Node2D) -> void:
+	hit.emit(hp)
 	$DeathMihh.play()
+	$AnimationPlayer.play("HitAnimation")
 	hp -= 1
-	hide() # Player disappears after being hit.
-	hit.emit() # scream in death pain and anguish at whoever listens
-	# Must be deferred as we can't change physics properties on a physics callback
-	$CollisionShape2D.set_deferred("disabled", true)
-
+	await get_tree().create_timer(1.0).timeout
+	if hp == 0: # if ur ded
+		died.emit()
+		hide()
+	else:
+		$AnimationPlayer.play("RESET")
 
 func start(pos):
 	position = pos
 	show()
+	hp = 3
 	$CollisionShape2D.disabled = false
 	$AnimatedSprite2D.animation = "wobble_down" # reset to down animation
 	$AnimatedSprite2D.play()

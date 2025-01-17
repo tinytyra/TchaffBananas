@@ -22,6 +22,10 @@ func show_game_over():
 func update_score(score):
 	$ScoreLabel.text = str(score)
 
+func update_health(hp):
+	var array = [":(", ":|", ":)", ":3"]
+	$hpLabel.text = str(array[hp])
+
 func _on_start_button_pressed():
 	$StartButton.hide()
 	$Guide.hide()
