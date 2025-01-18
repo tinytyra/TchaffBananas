@@ -13,7 +13,7 @@ func _ready():
 	$AnimatedSprite2D.play() # start wobbling
 
 func _on_body_entered(_body: Node2D) -> void:
-	#hp -= 1
+	hp -= 1
 	hit.emit(hp)
 	$DeathMihh.play()
 	$AnimatedSprite2D.pause() # get bamboozled into no wobble
