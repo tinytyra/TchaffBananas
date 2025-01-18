@@ -2,6 +2,7 @@ extends Area2D
 
 signal died
 signal hit(hp)
+signal respawn(hp)
 var hp : int = 3
 
 @export var speed = 400 # How fast Tchaff moves
@@ -38,6 +39,7 @@ func start(pos):
 	$AnimationPlayer.play("RESET") # reset animation states
 	$CollisionShape2D.disabled = false # reenable hitbox
 	$AnimatedSprite2D.play() # start wobbling
+	respawn.emit(hp)
 
 func _physics_process(delta):
 	var velocity = Vector2.ZERO
