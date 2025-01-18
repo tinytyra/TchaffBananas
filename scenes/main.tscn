@@ -21,7 +21,10 @@ z_index = 5
 position = Vector2(960, 280)
 
 [node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 2.5
+
+[node name="MoreMobsTimer" type="Timer" parent="."]
+wait_time = 15.0
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
@@ -45,9 +48,11 @@ centered = false
 
 [node name="HUD" parent="." instance=ExtResource("4_fg7k5")]
 
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
 [connection signal="died" from="tchaff" to="." method="game_over"]
 [connection signal="hit" from="tchaff" to="HUD" method="update_health"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="MoreMobsTimer" to="." method="_on_more_mobs_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="newGame"]

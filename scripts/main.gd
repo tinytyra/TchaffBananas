@@ -10,6 +10,7 @@ func _ready():
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$MoreMobsTimer.stop()
 	$HUD.show_game_over()
 	print("Game over") # For testing purposes to see if/when code breaks clearer
 
@@ -17,12 +18,22 @@ func newGame():
 	score = 0
 	$tchaff.start($StartPos.position)
 	$StartTimer.start()
+	$MobTimer.set_wait_time(2.5)
 	$HUD.update_score(score)
 	$HUD.show_message("prepar for... BANAN")
 	get_tree().call_group("bananas", "queue_free")
-	print("Threw the bananas out and started a new game") # For testing purposes to see if/when code breaks clearer
+	print("A new game, new bananas")
 
 func _on_mob_timer_timeout() -> void:
+	spawn_banana_children()
+	spawn_banana_children()
+	spawn_banana_children()
+	spawn_banana_children()
+	spawn_banana_children()
+	print("Banana timer timed out, next banana set in:")
+	print($MobTimer.wait_time)
+
+func spawn_banana_children() -> void:
 	var mob = mob_scene.instantiate() # New mob scene instance
 
 	var mob_spawn_location = $MobPath/MobSpawnLocation
@@ -40,13 +51,23 @@ func _on_mob_timer_timeout() -> void:
 
 	add_child(mob) # Spawn by adding to main scene
 
-	print("Added banana child") # For testing purposes to see if/when code breaks clearer
-
 func _on_score_timer_timeout():
 	score += 1
 	$HUD.update_score(score)
 
+func _on_more_mobs_timer_timeout() -> void:
+	if $MobTimer.wait_time <= 0.25:
+		$MoreMobsTimer.stop()
+	else:
+		$MobTimer.stop()
+		$MobTimer.wait_time -= 0.25
+		$MobTimer.start()
+
 func _on_start_timer_timeout() -> void:
 	$MobTimer.start()
 	$ScoreTimer.start()
-	print("StartTimer timed out") # For testing purposes to see if/when code breaks clearer
+	$MoreMobsTimer.start()
+	print("Starting bananas...") # For testing purposes to see if/when code breaks clearer
+
+func _on_child_entered_tree(node: Node):
+	print(node)
