@@ -26,6 +26,24 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="hpLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -359.0
+offset_bottom = 211.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0.540266, 0.744403, 0.591181, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 25
+theme_override_constants/shadow_outline_size = 20
+theme_override_fonts/font = ExtResource("1_xyxky")
+theme_override_font_sizes/font_size = 140
+text = ":3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Message" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,6 +68,27 @@ theme_override_font_sizes/font_size = 160
 text = "Tchaff, dodge banans!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Guide" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = -122.0
+offset_right = 750.0
+offset_bottom = -13.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.894118, 0.776471, 0.980392, 1)
+theme_override_colors/font_shadow_color = Color(0.211765, 0.137255, 0.278431, 1)
+theme_override_colors/font_outline_color = Color(0.211765, 0.137255, 0.278431, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 3
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("1_xyxky")
+theme_override_font_sizes/font_size = 33
+text = "WASD or arrow keys to move
+Click Play, Space or Enter to start"
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 7
