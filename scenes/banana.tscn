@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3llc70d217dn"]
+
+[ext_resource type="Script" path="res://scripts/banana.gd" id="1_oxdoy"]
+[ext_resource type="Texture2D" uid="uid://gyrboveuqko7" path="res://assets/spritesheet_outlined-export.png" id="2_5thhs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etlus"]
+atlas = ExtResource("2_5thhs")
+region = Rect2(512, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51631"]
+atlas = ExtResource("2_5thhs")
+region = Rect2(768, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpe4u"]
+atlas = ExtResource("2_5thhs")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gywgl"]
+atlas = ExtResource("2_5thhs")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4ofx"]
+atlas = ExtResource("2_5thhs")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_500pv"]
+atlas = ExtResource("2_5thhs")
+region = Rect2(256, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_umrub"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etlus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51631")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etlus")
+}],
+"loop": true,
+"name": &"green",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpe4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gywgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpe4u")
+}],
+"loop": true,
+"name": &"pink",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4ofx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_500pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4ofx")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 1.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66tc6"]
+radius = 11.6541
+height = 84.4755
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["bananas"]]
+position = Vector2(1020, 576)
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_oxdoy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_umrub")
+animation = &"pink"
+frame_progress = 0.801509
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+rotation = 1.06697
+shape = SubResource("CapsuleShape2D_66tc6")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

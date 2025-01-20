@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://b31nuatkeqsqd"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_c2a4o"]
+[ext_resource type="PackedScene" uid="uid://dg2a5feb15vop" path="res://scenes/tchaff.tscn" id="2_61am3"]
+[ext_resource type="PackedScene" uid="uid://b3llc70d217dn" path="res://scenes/banana.tscn" id="2_s6yhm"]
+[ext_resource type="PackedScene" uid="uid://xljnuuedrcyy" path="res://scenes/hud.tscn" id="4_fg7k5"]
+[ext_resource type="Texture2D" uid="uid://ddexjvjwbqscj" path="res://assets/place_bg.png" id="4_wx3lw"]
+
+[sub_resource type="Curve2D" id="Curve2D_q1pmq"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -36, -29, 0, 0, 0, 0, 1941, -34, 0, 0, 0, 0, 1959, 1120, 0, 0, 0, 0, -39, 1127, 0, 0, 0, 0, -36, -29)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("1_c2a4o")
+mob_scene = ExtResource("2_s6yhm")
+
+[node name="tchaff" parent="." instance=ExtResource("2_61am3")]
+z_index = 5
+position = Vector2(960, 280)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="MoreMobsTimer" type="Timer" parent="."]
+wait_time = 15.0
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPos" type="Marker2D" parent="."]
+position = Vector2(960, 280)
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_q1pmq")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(-36, -29)
+rotation = -0.00252908
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("4_wx3lw")
+centered = false
+
+[node name="HUD" parent="." instance=ExtResource("4_fg7k5")]
+
+[connection signal="child_entered_tree" from="." to="." method="_on_child_entered_tree"]
+[connection signal="died" from="tchaff" to="." method="game_over"]
+[connection signal="hit" from="tchaff" to="HUD" method="update_health"]
+[connection signal="respawn" from="tchaff" to="HUD" method="update_health"]
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="MoreMobsTimer" to="." method="_on_more_mobs_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="newGame"]
